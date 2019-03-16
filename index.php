@@ -11,86 +11,96 @@
   </head>
 
   <body>
-    <nav>
+    <nav class="teal">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Absensi</a>
+        <a href="#" class="brand-logo center">Absensi</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="">Beranda</a></li>
-          <li><a href="">Data Mahasiswa</a></li>
-          <li><a href="">Validasi</a></li>
+          <li><a href="?page=dashboard">Beranda</a></li>
+          <li><a href="?page=mahasiswa">Data Mahasiswa</a></li>
+          <li><a href="?page=validasi">Validasi</a></li>
         </ul>
       </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">JavaScript</a></li>
+    <li><a href="?page=dashboard">Beranda</a></li>
+    <li><a href="?page=mahasiswa">Data Mahasiswa</a></li>
+    <li><a href="?page=validasi">Validasi</a></li>
     </ul>
 
 
     <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <table>
-          <thead>
 
-            <tr>
-                <th>No</th>
-                <th>NIM</th>
-                <th>Nama</th>
-                <th>Status</th>
-                <th>Waktu</th>
-            </tr>
-          </thead>
+      <?php
 
-          <tbody>
+        if(isset($_GET['page'])){
+          $page = $_GET['page'];
 
-            <?php
-            include 'config.php';
+          switch ($page) {
+            case 'dashboard':
+              include "page/dashboard.php";
+              break;
+            case 'mahasiswa':
+              include "page/mahasiswa.php";
+              break;
+            case 'validasi':
+              include "page/validasi.php";
+              break;
+            default:
+              include "page/404.php";
+              break;
+          }
+        }else{
+          include "page/dashboard.php";
+        }
 
-            $url=$_SERVER['REQUEST_URI'];
-            header("Refresh: 10; URL=$url");
+       ?>
 
-            $result_mahasiswa=mysqli_query($conn, "SELECT * FROM tbl_mahasiswa");
-            $i=1;
-            while ($rows=mysqli_fetch_assoc($result_mahasiswa)):
-
-            ?>
-            <tr>
-              <td><?= $i++ ?></td>
-              <td><?= $rows['nim']?></td>
-              <td><?= $rows['nama']?></td>
-              <td>
-              <?php
-
-              $a=$rows['UID'];
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_log WHERE UID='$a'");
-              $row_log=mysqli_fetch_assoc($result_log);
-              if ($row_log['waktu']) {
-                echo "Sudah Scan";
-              }else {
-                echo "Belum Scan";
-              };
-
-               ?></td>
-              <td><?= $row_log['waktu'] ; ?></td>
-            </tr>
-            <?php endwhile; ?>
-          </tbody>
-        </table>
-        </div>
-      </div>
     </div>
 
     <!--JavaScript at end of body for optimized loading-->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
     <script type="text/javascript">
     $(document).ready(function(){
       $('.sidenav').sidenav();
     });
+
+
+    $(document).ready(function(){
+       $('.fixed-action-btn').floatingActionButton();
+     });
+
+     $(document).ready(function(){
+        $('.modal').modal();
+      });
+
+
     </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.tampildata_mahasiswa').load("page/tampilmahasiswa.php");
+      	$(".tombol-simpan").click(function(){
+      		var data = $('.form-user').serialize();
+      		$.ajax({
+      			type: 'POST',
+      			url: "page/simpanmahasiswa.php",
+      			data: data,
+      			success: function() {
+      				$('.tampildata_mahasiswa').load("page/tampilmahasiswa.php");
+              $('.modal').modal().close;
+      			}
+      		});
+      	});
+      });
+
+
+
+    </script>
+
   </body>
 </html>

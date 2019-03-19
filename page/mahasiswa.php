@@ -57,7 +57,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-light btn-flat">Tutup</a>
-        <a href="#!" data-id=15 class="waves-effect waves-light btn-flat tombol-hapus">Simpan</a>
+        <a href="#!" class="modal-close waves-effect waves-light btn-flat">Tidak</a>
+        <a href="#!" data-id=15 class="waves-effect waves-light btn-flat tombol-hapus">Iya</a>
       </div>
     </div>

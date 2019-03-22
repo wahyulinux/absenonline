@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-$UID=$_POST['UID'];
+$UID=$_GET['UID'];
 $time=new DateTime();
 $waktu=$time->format('Y-m-d H:i:s');
 echo $waktu;

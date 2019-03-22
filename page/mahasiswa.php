@@ -61,3 +61,16 @@
         <a href="#!" data-id=15 class="waves-effect waves-light btn-flat tombol-hapus">Iya</a>
       </div>
     </div>
+
+
+    <div id="modallihat" class="modal">
+      <div class="modal-content">
+        <div class="row">
+          <div class="modal-data"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-light btn-flat">Tutup</a>
+        <a href="#!" class="waves-effect waves-light btn-flat tombol-simpan">Simpan</a>
+      </div>
+    </div>

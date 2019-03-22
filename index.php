@@ -1,3 +1,15 @@
+<?php
+  error_reporting(0);
+	session_start();
+  $id_user=$_SESSION['id_user'] || $_COOKIE['id_user'];
+	if(!$id_user){
+		header("location: login.php");
+	}
+
+  include "config.php";
+  $result_user=mysqli_query($conn, "SELECT nama FROM tbl_user WHERE id_user='$id_user'");
+  $data_user=mysqli_fetch_assoc($result_user);
+	?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,6 +31,7 @@
           <li><a href="?page=dashboard">Beranda</a></li>
           <li><a href="?page=mahasiswa">Data Mahasiswa</a></li>
           <li><a href="?page=validasi">Validasi</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -98,9 +111,19 @@
       	});
       });
 
-
-
     </script>
+
+<script type="text/javascript">
+  $('#statusscan').load('page/statusscan.php');
+    setInterval(function(){
+    $('#statusscan').load('page/statusscan.php');
+  },3000);
+
+  $('#totalscan').load('page/totalscan.php');
+    setInterval(function(){
+    $('#totalscan').load('page/totalscan.php');
+  },3000);
+</script>
 
   </body>
 </html>

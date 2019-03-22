@@ -23,10 +23,10 @@
       <td><?= $rows['nim']?></td>
       <td><?= $rows['nama']?></td>
       <td>
-        <a href="" class="btn-floating btn yellow">
+        <a class="btn-floating btn yellow tombol-lihat">
           <i class="material-icons">edit</i>
         </a>
-        <a href="#modalHapusMahasiswa" data-id="<?= $rows['id']?>" class="a btn-floating btn red modal-trigger">
+        <a data-id="<?= $rows['id']?>" href="#!" class="a btn-floating btn red tombol-hapus">
           <i class="material-icons">delete</i>
         </a>
       </td>

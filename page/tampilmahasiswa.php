@@ -5,6 +5,7 @@
         <th>No</th>
         <th>NIM</th>
         <th>Nama</th>
+        <th>Kelas</th>
         <th>Action</th>
     </tr>
   </thead>
@@ -22,11 +23,12 @@
       <td><?= $i++ ?></td>
       <td><?= $rows['nim']?></td>
       <td><?= $rows['nama']?></td>
+      <td><?= $rows['kelas']?></td>
       <td>
         <a class="btn-floating btn yellow tombol-lihat">
           <i class="material-icons">edit</i>
         </a>
-        <a data-id="<?= $rows['id']?>" href="#!" class="a btn-floating btn red tombol-hapus">
+        <a href="?page=mahasiswa&id_hapus=<?= $rows['id']?>" class="a btn-floating btn red tombol-hapus">
           <i class="material-icons">delete</i>
         </a>
       </td>
@@ -34,3 +36,11 @@
     <?php endwhile; ?>
   </tbody>
 </table>
+
+<?php
+$id_hapus=$_GET['id_hapus'];
+
+if ($id_hapus) {
+  echo "jsjijdijsdijd";
+}
+ ?>

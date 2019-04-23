@@ -1,13 +1,17 @@
 <?php
   error_reporting(0);
 	session_start();
-  $id_user=$_SESSION['id_user'] || $_COOKIE['id_user'];
-	if(!$id_user){
+  $id_usercek=$_SESSION['id_user'] || $_COOKIE['id_user'];
+	if(!$id_usercek){
 		header("location: login.php");
 	}
-
+  if ($_COOKIE['id_user']) {
+    $id_user=$_COOKIE['id_user'] ;
+  }else{
+  $id_user=$_SESSION['id_user'] ;
+  }
   include "config.php";
-  $result_user=mysqli_query($conn, "SELECT nama FROM tbl_user WHERE id_user='$id_user'");
+  $result_user=mysqli_query($conn, "SELECT nama, level FROM tbl_user WHERE id_user=$id_user");
   $data_user=mysqli_fetch_assoc($result_user);
 	?>
 <!DOCTYPE html>
@@ -29,8 +33,14 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="?page=dashboard">Beranda</a></li>
-          <li><a href="?page=mahasiswa">Data Mahasiswa</a></li>
+          <?php
+            if ($data_user['level']=="admin") {
+              echo '<li><a href="?page=mahasiswa">Data Mahasiswa</a></li>';
+            }
+           ?>
+
           <li><a href="?page=validasi">Validasi</a></li>
+          <li><a href="?page=kehadiran">Kehadiran</a></li>
           <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
@@ -59,6 +69,9 @@
               break;
             case 'validasi':
               include "page/validasi.php";
+              break;
+            case 'kehadiran':
+              include "page/kehadiran.php";
               break;
             default:
               include "page/404.php";
@@ -92,6 +105,9 @@
       });
 
 
+
+
+
     </script>
 
     <script type="text/javascript">
@@ -114,15 +130,9 @@
     </script>
 
 <script type="text/javascript">
-  $('#statusscan').load('page/statusscan.php');
-    setInterval(function(){
-    $('#statusscan').load('page/statusscan.php');
-  },3000);
-
-  $('#totalscan').load('page/totalscan.php');
-    setInterval(function(){
-    $('#totalscan').load('page/totalscan.php');
-  },3000);
+$(document).ready(function(){
+  $('select').formSelect();
+});
 </script>
 
   </body>

@@ -9,6 +9,10 @@
       <label for="nama">Nama</label>
     </div>
     <div class="input-field col s12">
+      <input id="kelas" name="kelas" type="text" class="validate">
+      <label for="kelas">Kelas</label>
+    </div>
+    <div class="input-field col s12">
       <input id="uid" name="uid" type="text" class="validate">
       <label for="uid">UID Card</label>
     </div>

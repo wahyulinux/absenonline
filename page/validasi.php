@@ -76,7 +76,8 @@
       <td><?= $rows['kelas']?></td>
       <td>
         <div class="input-field col s12 m8">
-          <select>
+          <input type="hidden" name="uid[]" value="<?= $rows['UID']?>">
+          <select name="kehadiran[]">
             <?php
 
             $a=$rows['UID'];
@@ -106,3 +107,20 @@
   </div>
 </div>
 </form>
+
+<?php
+if ($_POST['kirim']) {
+  $pertemuan= $_POST['pertemuan'];
+  $uid=$_POST['uid'];
+
+  $kehadiran = $_POST['kehadiran'];
+  $jumlah_dipilih = count($kehadiran);
+
+    for($x=0;$x<$jumlah_dipilih;$x++){
+      mysqli_query($conn, "INSERT INTO `tbl_kehadiran` VALUES('', '$uid[$x]', '$pertemuan', '$kehadiran[$x]')");
+      mysqli_query($conn, "DELETE FROM tbl_log WHERE UID='$uid[$x]'");
+
+    }
+}
+
+ ?>

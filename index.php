@@ -1,5 +1,5 @@
 <?php
-  error_reporting(0);
+//  error_reporting(0);
 	session_start();
   $id_usercek=$_SESSION['id_user'] || $_COOKIE['id_user'];
 	if(!$id_usercek){
@@ -27,15 +27,20 @@
   </head>
 
   <body>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
     <nav class="teal">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">Absensi</a>
+        <a href="#" class="brand-logo">Absensi</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="?page=dashboard">Beranda</a></li>
           <?php
             if ($data_user['level']=="admin") {
-              echo '<li><a href="?page=mahasiswa">Data Mahasiswa</a></li>';
+              echo '
+							<li><a href="?page=mahasiswa">Data Mahasiswa</a></li>
+							<li><a href="?page=user">Pengguna</a></li>';
             }
            ?>
 
@@ -47,9 +52,18 @@
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-    <li><a href="?page=dashboard">Beranda</a></li>
-    <li><a href="?page=mahasiswa">Data Mahasiswa</a></li>
-    <li><a href="?page=validasi">Validasi</a></li>
+			<li><a href="?page=dashboard">Beranda</a></li>
+			<?php
+				if ($data_user['level']=="admin") {
+					echo '
+					<li><a href="?page=mahasiswa">Data Mahasiswa</a></li>
+					<li><a href="?page=user">Pengguna</a></li>';
+				}
+			 ?>
+
+			<li><a href="?page=validasi">Validasi</a></li>
+			<li><a href="?page=kehadiran">Kehadiran</a></li>
+			<li><a href="logout.php">Logout</a></li>
     </ul>
 
 
@@ -67,11 +81,17 @@
             case 'mahasiswa':
               include "page/mahasiswa.php";
               break;
+            case 'mahasiswa_edit':
+              include "page/editmahasiswa.php";
+              break;
             case 'validasi':
               include "page/validasi.php";
               break;
             case 'kehadiran':
               include "page/kehadiran.php";
+              break;
+            case 'user':
+              include "page/user.php";
               break;
             default:
               include "page/404.php";
@@ -87,8 +107,7 @@
 
     <!--JavaScript at end of body for optimized loading-->
 
-    <script src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+
 
     <script type="text/javascript">
     $(document).ready(function(){
@@ -128,6 +147,25 @@
       });
 
     </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.tampildata_user').load("page/tampiluser.php");
+      	$(".tombol-simpan-user").click(function(){
+      		var data = $('.form-user').serialize();
+      		$.ajax({
+      			type: 'POST',
+      			url: "page/simpanuser.php",
+      			data: data,
+      			success: function() {
+      				$('.tampildata_user').load("page/tampiluser.php");
+              $('.modal').modal().close;
+      			}
+      		});
+      	});
+      });
+
+    </script>
+
 
 <script type="text/javascript">
 $(document).ready(function(){

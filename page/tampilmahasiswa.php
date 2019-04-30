@@ -25,10 +25,10 @@
       <td><?= $rows['nama']?></td>
       <td><?= $rows['kelas']?></td>
       <td>
-        <a class="btn-floating btn yellow tombol-lihat">
+        <a class="btn-floating btn yellow" href="?page=mahasiswa_edit&id_edit=<?= $rows['id']?>&nim=<?= $rows['nim']?>&nama=<?= $rows['nama']?>&kelas=<?= $rows['kelas']?>&uid=<?= $rows['UID']?>">
           <i class="material-icons">edit</i>
         </a>
-        <a href="?page=mahasiswa&id_hapus=<?= $rows['id']?>" class="a btn-floating btn red tombol-hapus">
+        <a href="?page=mahasiswa&id_hapus=<?= $rows['id']?>&nama=<?= $rows['nama']?>" class="a btn-floating btn red tombol-hapus">
           <i class="material-icons">delete</i>
         </a>
       </td>
@@ -36,11 +36,3 @@
     <?php endwhile; ?>
   </tbody>
 </table>
-
-<?php
-$id_hapus=$_GET['id_hapus'];
-
-if ($id_hapus) {
-  echo "jsjijdijsdijd";
-}
- ?>

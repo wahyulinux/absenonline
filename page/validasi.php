@@ -108,7 +108,7 @@
         </select>
       </div>
       <div class="input-field col m3 s12">
-        <select name="jam">
+        <select name="jam" required>
           <option value="" disabled selected>Pilih Jam</option>
           <option value="08:00-09:30">08:00-09:30</option>
           <option value="09:30-11:00">09:30-11:00</option>
@@ -192,7 +192,7 @@ if ($_POST['kirim']) {
   $judul_pertemuan= $_POST['judul_pertemuan'];
   $jam= $_POST['jam'];
 
-  mysqli_query($conn, "INSERT INTO `tbl_pertemuan` VALUES('', '$pertemuan', '$judul_pertemuan', '$kelas', '$jam')");
+  mysqli_query($conn, "INSERT INTO `tbl_pertemuan` VALUES('', '$pertemuan', '$judul_pertemuan', '$kelas', '$jam', '')");
 
   $uid=$_POST['uid'];
 

@@ -74,7 +74,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -95,7 +95,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -116,7 +116,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -137,7 +137,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -158,7 +158,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -179,7 +179,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -200,7 +200,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -221,7 +221,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -242,7 +242,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -263,7 +263,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -284,7 +284,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -305,7 +305,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -326,7 +326,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -347,7 +347,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -368,7 +368,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -389,7 +389,7 @@
                 }elseif ($row_log['kehadiran']==1) {
                   echo 'red-text';
                 }elseif ($row_log['kehadiran']==2) {
-                  echo 'yellow-text';
+                  echo 'orange-text';
                 }
                 elseif ($row_log['kehadiran']==3) {
                   echo 'purple-text';
@@ -407,7 +407,7 @@
           <td>Keterangan</td>
           <td class="green-text">0 = Hadir</td>
           <td class="red-text">1 = Absen</td>
-          <td class="yellow-text">2 = Sakit</td>
+          <td class="orange-text">2 = Sakit</td>
           <td class="purple-text">3 = Izin</td>
           <td class="blue-text">4 = HTK</td>
         </tr>
@@ -426,8 +426,9 @@
       ?>
       <li class="collection-item avatar">
         <i class="circle <?php echo $a[$random_keys[$i]]; ?>"><b><?= $row_pertemuan['pertemuan'] ?></b></i>
-        <span class="title"><?= $row_pertemuan['judul_pertemuan'] ?></span>
+        <span class="title"><b><?= $row_pertemuan['judul_pertemuan'] ?></b></span>
         <p>Waktu : <?= $row_pertemuan['jam'] ?></p>
+        <p>Tanggal Validasi : <?= $row_pertemuan['tgl_validasi'] ?></p>
       </li>
     <?php $i++; endwhile;?>
     </ul>

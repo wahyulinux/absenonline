@@ -1,5 +1,5 @@
 <?php
-//  error_reporting(0);
+	error_reporting(0);
 	session_start();
   $id_usercek=$_SESSION['id_user'] || $_COOKIE['id_user'];
 	if(!$id_usercek){

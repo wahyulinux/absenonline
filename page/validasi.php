@@ -191,8 +191,10 @@ if ($_POST['kirim']) {
   $pertemuan= $_POST['pertemuan'];
   $judul_pertemuan= $_POST['judul_pertemuan'];
   $jam= $_POST['jam'];
+  $time=new DateTime();
+  $waktu=$time->format('Y-m-d H:i:s');
 
-  mysqli_query($conn, "INSERT INTO `tbl_pertemuan` VALUES('', '$pertemuan', '$judul_pertemuan', '$kelas', '$jam', '')");
+  mysqli_query($conn, "INSERT INTO `tbl_pertemuan` VALUES('', '$pertemuan', '$judul_pertemuan', '$kelas', '$jam', '$waktu')");
 
   $uid=$_POST['uid'];
 

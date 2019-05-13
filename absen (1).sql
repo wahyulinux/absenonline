@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 02, 2019 at 11:48 AM
+-- Generation Time: May 13, 2019 at 09:05 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -32,6 +32,7 @@ CREATE TABLE `tbl_kehadiran` (
   `id_validasi` int(11) NOT NULL,
   `UID` varchar(40) NOT NULL,
   `pertemuan` varchar(1) NOT NULL,
+  `matkul` int(5) NOT NULL,
   `kehadiran` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -39,23 +40,15 @@ CREATE TABLE `tbl_kehadiran` (
 -- Dumping data for table `tbl_kehadiran`
 --
 
-INSERT INTO `tbl_kehadiran` (`id_validasi`, `UID`, `pertemuan`, `kehadiran`) VALUES
-(46, '12345678', '1', 4),
-(47, '9shdhs', '1', 2),
-(48, '12345678', '2', 1),
-(49, '9shdhs', '2', 4),
-(50, '12345678', '3', 3),
-(51, '9shdhs', '3', 1),
-(52, '12345678', '4', 3),
-(53, '9shdhs', '4', 2),
-(54, '12345678', '5', 2),
-(55, '9shdhs', '5', 4),
-(56, '12345678', '6', 3),
-(57, '9shdhs', '6', 4),
-(58, '12345678', '5', 1),
-(59, '9shdhs', '5', 1),
-(60, '12345678', '7', 1),
-(61, '9shdhs', '7', 1);
+INSERT INTO `tbl_kehadiran` (`id_validasi`, `UID`, `pertemuan`, `matkul`, `kehadiran`) VALUES
+(70, '12345678', '2', 1, 1),
+(71, '9shdhs', '2', 1, 1),
+(72, '12345678', '1', 1, 4),
+(73, '9shdhs', '1', 1, 3),
+(74, '12345678', '1', 4, 2),
+(75, '9shdhs', '1', 4, 1),
+(76, '12345678', '2', 4, 4),
+(77, '9shdhs', '2', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -95,6 +88,30 @@ INSERT INTO `tbl_mahasiswa` (`id`, `UID`, `nim`, `nama`, `kelas`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_matkul`
+--
+
+CREATE TABLE `tbl_matkul` (
+  `id_matkul` int(5) NOT NULL,
+  `kode_matkul` varchar(10) NOT NULL,
+  `kelas` varchar(5) NOT NULL,
+  `nama_matkul` text NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_matkul`
+--
+
+INSERT INTO `tbl_matkul` (`id_matkul`, `kode_matkul`, `kelas`, `nama_matkul`, `id_user`) VALUES
+(1, 'PSD', '6ska1', 'Pengolahan SInyal Digital', 5),
+(2, 'PSMS', '6ska1', 'Persatuan Sholat Magrib Saja', 5),
+(3, 'NI', '5ska1', 'Network Insfrastructure', 6),
+(4, 'ADMSV', '6ska1', 'Administrasi Server', 6);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_pertemuan`
 --
 
@@ -104,21 +121,19 @@ CREATE TABLE `tbl_pertemuan` (
   `judul_pertemuan` text NOT NULL,
   `kelas` varchar(5) NOT NULL,
   `jam` varchar(11) NOT NULL,
-  `tgl_validasi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `tgl_validasi` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `matkul` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_pertemuan`
 --
 
-INSERT INTO `tbl_pertemuan` (`id_pertemuan`, `pertemuan`, `judul_pertemuan`, `kelas`, `jam`, `tgl_validasi`) VALUES
-(20, 1, 'Membahas Cinta', '6ska1', '08:00-09:30', '2019-04-30 10:06:12'),
-(21, 2, 'Semangat Bekarya', '6ska1', '09:30-11:00', '2019-04-30 10:06:12'),
-(22, 3, 'Memahami Cinta', '6ska1', '11:30-12:30', '2019-04-30 10:06:12'),
-(23, 4, 'Berkarya Bersama Hati', '6ska1', '09:30-11:00', '2019-04-30 10:06:12'),
-(24, 6, 'kimak mulah', '6ska1', '09:30-11:00', '0000-00-00 00:00:00'),
-(25, 5, 'ygygyg', '6ska1', '', '0000-00-00 00:00:00'),
-(26, 7, 'amang', '6ska1', '08:00-09:30', '0000-00-00 00:00:00');
+INSERT INTO `tbl_pertemuan` (`id_pertemuan`, `pertemuan`, `judul_pertemuan`, `kelas`, `jam`, `tgl_validasi`, `matkul`) VALUES
+(31, 2, 'Membahas Cinta', '6ska1', '08:00-09:30', '2019-05-12 23:05:49', 1),
+(32, 1, 'Semangat Bekarya', '6ska1', '08:00-09:30', '2019-05-12 23:06:16', 1),
+(33, 1, 'Pengenalan Open Stack', '6ska1', '08:00-09:30', '2019-05-12 23:39:50', 4),
+(34, 2, 'Menginstalasi Open Stack', '6ska1', '08:00-09:30', '2019-05-12 23:41:38', 4);
 
 -- --------------------------------------------------------
 
@@ -140,8 +155,8 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id_user`, `username`, `password`, `level`, `nama`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Subur Jaya'),
-(2, 'dosen', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', 'Halfa'),
-(5, 'subur', 'ce9689abdeab50b5bee3b56c7aadee27', 'dosen', 'Subur Jaya');
+(5, 'subur', 'ce9689abdeab50b5bee3b56c7aadee27', 'dosen', 'Subur Jaya'),
+(6, 'dosen', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen', 'Dosen Killer');
 
 --
 -- Indexes for dumped tables
@@ -168,6 +183,12 @@ ALTER TABLE `tbl_mahasiswa`
   ADD UNIQUE KEY `UID` (`UID`);
 
 --
+-- Indexes for table `tbl_matkul`
+--
+ALTER TABLE `tbl_matkul`
+  ADD PRIMARY KEY (`id_matkul`);
+
+--
 -- Indexes for table `tbl_pertemuan`
 --
 ALTER TABLE `tbl_pertemuan`
@@ -187,7 +208,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_kehadiran`
 --
 ALTER TABLE `tbl_kehadiran`
-  MODIFY `id_validasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_validasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `tbl_log`
@@ -202,16 +223,22 @@ ALTER TABLE `tbl_mahasiswa`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT for table `tbl_matkul`
+--
+ALTER TABLE `tbl_matkul`
+  MODIFY `id_matkul` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `tbl_pertemuan`
 --
 ALTER TABLE `tbl_pertemuan`
-  MODIFY `id_pertemuan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_pertemuan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

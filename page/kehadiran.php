@@ -11,6 +11,17 @@
             </select>
           </div>
           <div class="input-field col m6 s12">
+            <select name="matkul" required>
+              <option value="" disabled selected>Pilih Mata Kuliah</option>
+              <?php
+                $result_matkul=mysqli_query($conn, "SELECT * FROM tbl_matkul WHERE id_user='$id_user'");
+                while ($rowmatkul=mysqli_fetch_assoc($result_matkul)):
+               ?>
+              <option value="<?= $rowmatkul['id_matkul']; ?>"><?= $rowmatkul['kode_matkul'].' - '.$rowmatkul['nama_matkul']; ?></option>
+            <?php endwhile; ?>
+            </select>
+          </div>
+          <div class="input-field col m6 s12">
             <button class="btn waves-effect waves-light" type="submit" name="page" value="kehadiran">Pilih
               <i class="material-icons right">send</i>
             </button>
@@ -54,9 +65,8 @@
         <tbody>
           <?php
           $kelas=$_GET['kelas'];
+          $matkul=$_GET['matkul'];
           $result_mahasiswa=mysqli_query($conn, "SELECT * FROM tbl_mahasiswa WHERE kelas='$kelas'");
-          $i=1;
-          $scan=0;
           while ($rows=mysqli_fetch_assoc($result_mahasiswa)):
             $a=$rows['UID'];
           ?>
@@ -64,7 +74,7 @@
             <td><?= $rows['nama']?></td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='1'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='1' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -85,7 +95,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='2'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='2' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -106,7 +116,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='3'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='3' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -127,7 +137,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='4'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='4' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -148,7 +158,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='5'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='5' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -169,7 +179,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='6'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='6' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -190,7 +200,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='7'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='7' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -211,7 +221,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='8'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='8' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -232,7 +242,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='9'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='9' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -253,7 +263,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='10'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='10' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -274,7 +284,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='11'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='11' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -295,7 +305,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='12'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='12' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -316,7 +326,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='13'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='13' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -337,7 +347,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='14'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='14' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -358,7 +368,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='15'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='15' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -379,7 +389,7 @@
             </td>
             <td>
               <?php
-              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='16'");
+              $result_log=mysqli_query($conn, "SELECT * FROM tbl_kehadiran WHERE UID='$a' and pertemuan='16' and matkul='$matkul'");
               $row_log=mysqli_fetch_assoc($result_log);
               ?>
                 <span class="
@@ -421,7 +431,7 @@
       $a=array("red","green","blue","yellow","brown","pink","purple","indigo","draken-cyan","lime","amber","orange","brown","deep-orange","light-green","cyan accent-2");
       $random_keys=array_rand($a,5);
       $i=0;
-      $result_pertemuan=mysqli_query($conn, "SELECT * FROM tbl_pertemuan WHERE kelas='$kelas'");
+      $result_pertemuan=mysqli_query($conn, "SELECT * FROM tbl_pertemuan WHERE kelas='$kelas' and matkul='$matkul'");
       while ($row_pertemuan=mysqli_fetch_assoc($result_pertemuan)):
       ?>
       <li class="collection-item avatar">

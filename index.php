@@ -40,12 +40,15 @@
             if ($data_user['level']=="admin") {
               echo '
 							<li><a href="?page=mahasiswa">Data Mahasiswa</a></li>
+							<li><a href="?page=matkul">Mata Kuliah</a></li>
 							<li><a href="?page=user">Pengguna</a></li>';
+            }else {
+            	echo '<li><a href="?page=validasi">Validasi</a></li>
+		          			<li><a href="?page=kehadiran">Kehadiran</a></li>';
             }
            ?>
 
-          <li><a href="?page=validasi">Validasi</a></li>
-          <li><a href="?page=kehadiran">Kehadiran</a></li>
+
           <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
@@ -57,12 +60,13 @@
 				if ($data_user['level']=="admin") {
 					echo '
 					<li><a href="?page=mahasiswa">Data Mahasiswa</a></li>
+					<li><a href="?page=matkul">Mata Kuliah</a></li>
 					<li><a href="?page=user">Pengguna</a></li>';
+				}else {
+					echo '<li><a href="?page=validasi">Validasi</a></li>
+								<li><a href="?page=kehadiran">Kehadiran</a></li>';
 				}
 			 ?>
-
-			<li><a href="?page=validasi">Validasi</a></li>
-			<li><a href="?page=kehadiran">Kehadiran</a></li>
 			<li><a href="logout.php">Logout</a></li>
     </ul>
 
@@ -92,6 +96,9 @@
               break;
             case 'user':
               include "page/user.php";
+              break;
+						case 'matkul':
+              include "page/matkul.php";
               break;
             default:
               include "page/404.php";
@@ -163,8 +170,24 @@
       		});
       	});
       });
-
     </script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('.tampilmatkul').load("page/tampilmatkul.php");
+			$(".tombol-simpan-matkul").click(function(){
+				var data = $('.form-matkul').serialize();
+				$.ajax({
+					type: 'POST',
+					url: "page/simpanmatkul.php",
+					data: data,
+					success: function() {
+						$('.tampilmatkul').load("page/tampilmatkul.php");
+						$('.modal').modal().close;
+					}
+				});
+			});
+		});
+		</script>
 
 
 <script type="text/javascript">
